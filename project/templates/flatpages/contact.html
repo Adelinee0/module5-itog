@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{ flatpage.title }}</title>
+</head>
+<body>
+    <i>{{ flatpage.content }}</i>
+    <i>{{ flatpage.content }}</i>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{ flatpage.title }}</title>
+</head>
+<body>
+{{ flatpage.content }}
+{% include 'flatpages/inc.html' %}
+<h2> просто включает код из файла 'flatpages/inc.html' в нашу страничку  </h2>
+<h2> SKILL FACTORY</h2>
+</body>
+</html>
