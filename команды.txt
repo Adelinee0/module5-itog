@@ -1,0 +1,83 @@
+1.
+u1 = User.objects.create_user(username='Adell')
+u2 = User.objects.create_user(username='Sofiaa')
+u3 = User.objects.create_user(username='Marinaa')
+u4 = User.objects.create_user(username='Mishaa')
+
+
+2.
+a1 = Author.objects.create(authorUser = u1)
+a2 = Author.objects.create(authorUser = u2)
+
+3.
+c1 = Category.objects.create(name_category = 'Food1')
+c2 = Category.objects.create(name_category = 'Family1')
+c3 = Category.objects.create(name_category = 'Hobby1')
+c4 = Category.objects.create(name_category = 'Art1')
+
+4.
+post1 = Post.objects.create(author=a1, categoryType='NW', title='Заголовок новости', text = 'some text') 
+post2 = Post.objects.create(author=a1, categoryType='AR', title='Заголовок cтатьи', text = 'some text article 1111') 
+post3 = Post.objects.create(author=a2, categoryType='AR', title='Заголовок статьи', text = 'some text article 2222') 
+
+5.
+Post.objects.get(id=1).postCategory.add(c1)
+post1.postCategory.add(c2)
+post2.postCategory.add(Category.objects.get(id=3))
+post3.postCategory.add(Category.objects.get(id=4))
+
+6.
+comm1 = Comment.objects.create(postComment = post1, userComment = a1.authorUser, text = 'nice!')
+comm2 = Comment.objects.create(postComment = post1, userComment = a2.authorUser, text = 'cool!')
+comm3 = Comment.objects.create(postComment = post2, userComment = a1.authorUser, text = 'nice!!!')
+comm4 = Comment.objects.create(postComment = post2, userComment = u2, text = 'nice!')
+comm5 = Comment.objects.create(postComment = post3, userComment = u2, text = 'nice!')
+
+7.
+Comment.objects.get(id=1).like()
+post1.like()
+
+Post.objects.get(id=2).dislike()
+
+post3.like()
+Post.objects.get(id=3).like()
+Post.objects.get(id=3).like()
+Comment.objects.get(id=5).like()
+
+
+8.
+a1.update_rating()
+a2.update_rating()
+
+9.
+
+a = Author.objects.order_by('-ratingAuthor')[:1]
+for i in a:
+	i.authorUser.username
+	i.ratingAuthor
+
+10.
+d = Post.objects.order_by('-rating')[:1]
+for i in d:
+	i.createDate
+	i.author.authorUser.username
+	i.rating
+	i.title
+	i.preview()
+
+11. d.
+Сomment.objects.filter(position = Comment.postComment)
+Вывести все комментарии (дата, пользователь, рейтинг, текст) к этой статье.
+
+m = Comment.objects.filter(postComment=Post.objects.get(id=1))
+for i in m:
+	i.commentTime
+	i.rating
+	i.text
+	i.userComment.username
+
+
+
+
+
+
